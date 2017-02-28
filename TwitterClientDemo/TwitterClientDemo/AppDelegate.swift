@@ -46,7 +46,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print (url.description)
         let requestToken = BDBOAuth1Credential(queryString: url.query)
         let twitterClient = BDBOAuth1SessionManager(baseURL: NSURL(string: "https://api.twitter.com")! as URL!, consumerKey: "kyt1AJtv6PgTHh7MBYyRSGOes", consumerSecret: "hFfVCL6nMVonX2oWNwu3vGOuSc7betzCqGnfhMm5SCjkvaR7K2")
-        twitterClient?.fetchAccessToken(withPath: "oauth/access_token", method: "POST", requestToken: requestToken, success: <#T##((BDBOAuth1Credential?) -> Void)!##((BDBOAuth1Credential?) -> Void)!##(BDBOAuth1Credential?) -> Void#>, failure: <#T##((Error?) -> Void)!##((Error?) -> Void)!##(Error?) -> Void#>)
+        twitterClient?.fetchAccessToken(withPath: "oauth/access_token", method: "POST", requestToken: requestToken, success: { (accessToken: BDBOAuth1Credential?) in
+            print ("Got the access token")
+            
+            // Get account information of the user
+            twitterClient?.get("1.1/account/verify_credentials.json", parameters: nil, progress: nil, success: { (task: URLSessionDataTask, response: Any?) in
+                print("My account: \(response)")
+              
+            }, failure: { (task: URLSessionDataTask?, error: Error) in
+                print("Error: \(error.localizedDescription)")
+            })
+            
+            // Get user's timeline tweets
+            twitterClient?.get("1.1/statuses/home_timeline.json", parameters: nil, progress: nil, success: { (task: URLSessionDataTask, response: Any?) in
+                let tweets = response as! [NSDictionary]
+                for tweet in tweets {
+                    print ("\(tweet["text"]!)")
+                }
+                
+            }, failure: { (task: URLSessionDataTask?, error: Error) in
+                print ("error:\(error.localizedDescription)")
+            })
+            
+            
+            
+            
+            
+        }, failure: { (error: Error?) in
+            print ("error: \(error?.localizedDescription)")
+        })
         return true
     }
 
