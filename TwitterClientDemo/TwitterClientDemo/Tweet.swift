@@ -16,6 +16,8 @@ class Tweet: NSObject {
     var timestamp: NSDate?
     var retweetCount: Int = 0
     var favoritesCount: Int = 0
+    var userName: NSString?
+    var imageUrl: NSString?
     
     init(dictionary: NSDictionary){
         text = dictionary["text"] as? NSString
@@ -29,6 +31,8 @@ class Tweet: NSObject {
             formatter.dateFormat = "EEE MMM d HH:mm:ss Z y"
             timestamp = formatter.date(from: timestampString) as NSDate?
         }
+        userName = (dictionary["user"] as? NSDictionary)?["name"] as? NSString
+        imageUrl = (dictionary["user"] as? NSDictionary)?["profile_image_url_https"] as? NSString
         
     }
     
