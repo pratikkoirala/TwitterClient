@@ -50,11 +50,15 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         cell.tweetTitle.text = eachTweet.userName as! String
         
         let imageURL = URL(string: eachTweet.imageUrl as! String)
-        cell.imageView?.setImageWith(imageURL!)
+        cell.imageView?.setImageWith(imageURL! as URL!)
+        cell.imageView?.sizeToFit()
         return cell
     }
     
 
+    @IBAction func onLogout(_ sender: Any) {
+        TwitterAPI.sharedInstance?.logout()
+    }
     /*
     // MARK: - Navigation
 
