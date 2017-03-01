@@ -46,12 +46,7 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let eachTweet = tweets[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "TweetCell", for: indexPath) as! TweetCell
-        cell.tweetDetail.text = eachTweet.text as? String
-        cell.tweetTitle.text = eachTweet.userName as! String
-        
-        let imageURL = URL(string: eachTweet.imageUrl as! String)
-        cell.profileImage.setImageWith(imageURL! as URL)
-        cell.timestampLabel.text = TwitterAPI.changeTimeStampFormatToString(timestamp: eachTweet.timestamp as! Date)
+        cell.tweet = eachTweet
         return cell
     }
     
