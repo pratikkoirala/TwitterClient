@@ -83,6 +83,27 @@ class TwitterAPI: BDBOAuth1SessionManager {
         })
     }
     
+    static func changeTimeStampFormatToString(timestamp: Date) -> String {
+        
+        let interval = timestamp.timeIntervalSinceNow
+        
+        if interval < 60 * 60 * 24 {
+            let seconds = -Int(interval.truncatingRemainder(dividingBy: 60))
+            let minutes = -Int((interval / 60).truncatingRemainder(dividingBy: 60))
+            let hours = -Int((interval / 3600))
+            
+            let result = (hours == 0 ? "" : "\(hours)h ") + (minutes == 0 ? "" : "\(minutes)m ") + (seconds == 0 ? "" : "\(seconds)s")
+            return result
+        } else {
+            let formatter: DateFormatter = {
+                let f = DateFormatter()
+                f.dateFormat = "EEE/MMM/d"
+                return f
+            }()
+            return formatter.string(from: timestamp)
+        }
+    }
+    
     func logout(){
         User.currentUser = nil
         deauthorize()

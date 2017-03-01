@@ -50,8 +50,8 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         cell.tweetTitle.text = eachTweet.userName as! String
         
         let imageURL = URL(string: eachTweet.imageUrl as! String)
-        cell.imageView?.setImageWith(imageURL! as URL!)
-        cell.imageView?.sizeToFit()
+        cell.profileImage.setImageWith(imageURL! as URL)
+        cell.timestampLabel.text = TwitterAPI.changeTimeStampFormatToString(timestamp: eachTweet.timestamp as! Date)
         return cell
     }
     

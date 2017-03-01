@@ -69,7 +69,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FqG-VN-7VQ">
-                                                    <rect key="frame" x="70" y="0.0" width="297" height="21"/>
+                                                    <rect key="frame" x="70" y="0.0" width="181" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                                     <nil key="textColor"/>
@@ -82,14 +82,23 @@
                                                     <color key="textColor" red="0.39277241492146597" green="0.39277241492146597" blue="0.39277241492146597" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Timestamp" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dbq-qd-Eur">
+                                                    <rect key="frame" x="302" y="-2" width="65" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
+                                                    <color key="textColor" red="0.76149378270000001" green="0.76149378270000001" blue="0.76149378270000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aUD-lB-vkB">
-                                                    <rect key="frame" x="9" y="0.0" width="54" height="62"/>
+                                                    <rect key="frame" x="9" y="8" width="54" height="48"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <rect key="contentStretch" x="0.5" y="0.5" width="1" height="1"/>
                                                 </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="profileImage" destination="aUD-lB-vkB" id="M0c-87-frX"/>
+                                            <outlet property="timestampLabel" destination="Dbq-qd-Eur" id="rAa-5W-Y0c"/>
                                             <outlet property="tweetDetail" destination="glc-9z-h6n" id="ukw-Hr-2Qi"/>
                                             <outlet property="tweetTitle" destination="FqG-VN-7VQ" id="qqw-C5-lv8"/>
                                         </connections>
