@@ -54,7 +54,7 @@ The authorization of user was a challenging part of this project.
     limitations under the License.
     
     
-    # Project 5 - *Twitter Redux*
+# Project 5 - *Twitter Redux*
 
 Time spent: **X** hours spent in total
 
